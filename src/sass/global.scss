@@ -1,0 +1,76 @@
+@use './Variable.scss' as variable;
+
+.gradient-bg{
+    background-image: variable.$linear-gradient;
+}
+
+.text-active{
+    color: variable.$active-blue;
+}
+
+// DARK_MODE
+
+.bg-main-dark{
+    background-color: variable.$bg-main-dark;
+}
+
+.bg-todo-dark{
+    background-color: variable.$bg-todo-dark;
+}
+
+.bg-muted{
+    background-color: variable.$text-muted;
+}
+
+.text-color-dark{
+    color: variable.$text-color-dark;
+}
+
+.text-color-nav-dark{
+    color: #fff;
+}
+
+.text-color-hover-dark{
+    color: variable.$text-color-hover-dark;
+}
+
+.text-completed-dark{
+    color: variable.$text-completed-dark;
+}
+
+.text-muted{
+    color: variable.$text-muted;
+}
+
+.border-color-dark{
+    border-color: variable.$border-color-dark;
+}
+
+.borderBg-color-dark{
+    background-color: variable.$border-color-dark;
+}
+// LIGHT_MODE
+.bg-main-light{
+    background-color: variable.$bg-main-light;
+}
+
+
+.bg-todo-light{
+    background-color: variable.$bg-todo-light;
+}
+
+.border-color-light{
+    border-color: variable.$border-color-light;
+}
+
+.borderBg-color-light{
+    background-color: variable.$border-color-light;
+}
+
+.text-completed-light{
+    color: variable.$text-completed-light;
+}
+
+.text-color-light{
+    color: variable.$text-color-light;
+}

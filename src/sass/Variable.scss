@@ -1,0 +1,32 @@
+// colors
+
+$active-blue: hsl(220, 98%, 61%);
+$linear-gradient: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
+// Light Theme
+    // box-bg
+$bg-todo-light: hsl(0, 0%, 98%);
+    // main-bg
+$bg-main-light: hsl(236, 33%, 92%);
+    // border-color-dark
+$border-color-light: hsl(233, 11%, 84%);
+    // text-completed-light
+$text-completed-light: hsl(236, 9%, 61%);
+    // text-color-light
+$text-color-light: hsl(235, 19%, 35%);
+
+// Dark Theme
+    // main-bg
+$bg-main-dark: hsl(235, 21%, 11%);
+    // box-bg
+$bg-todo-dark: hsl(235, 24%, 19%);
+    // text-color-dark
+$text-color-dark: hsl(234, 39%, 85%);
+    // text-hover
+$text-color-hover-dark: hsl(236, 33%, 92%);
+    // border-color-dark
+$border-color-dark: hsl(234, 11%, 52%);
+    // text-completed
+$text-completed-dark: hsl(233, 14%, 35%);
+    // text-muted
+$text-muted: hsl(237, 14%, 26%);

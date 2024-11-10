@@ -1,0 +1,5 @@
+@use './../../sass/Variable.scss' as variable;
+
+.footer-list div:hover{
+    color: variable.$active-blue;
+}
