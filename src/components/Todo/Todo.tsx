@@ -51,12 +51,14 @@ export const Todo = () => {
     }
 
     const handleCreateTodo = (text:string)=>{
-        let newTodo:TodoInfo = {text,status:'active'}
-        if(list){
-         setList([newTodo,...list])
-        }else{
-         setList([newTodo])
-        } 
+        if(text != null && text != ''){
+            let newTodo:TodoInfo = {text,status:'active'}
+            if(list){
+             setList([newTodo,...list])
+            }else{
+             setList([newTodo])
+            }
+        }
     }
 
 

@@ -23,20 +23,20 @@ export const TodoBox = ({type, text, status, index, onDelete, onChangeStatus, on
     }
 
     return (
-        <div className={`flex items-center w-full ${index != null?( index == 0 ? 'rounded-t border-b': ' border-b'): 'rounded'} ${theme == 'dark' ? 'bg-todo-dark border-color-dark': 'bg-todo-light border-color-light'} px-7 py-5`}>
-            <div className="flex items-center w-full h-full">
-                <div onClick={() =>mainClick()} className={`flex relative items-center justify-center w-6 h-6 mr-6 rounded-full cursor-pointer ${theme == 'dark' ? 'borderBg-color-dark':'borderBg-color-light'} ${status === 'completed' && 'gradient-bg'} check-box`}>
+        <div className={`flex items-center w-full min-h-full ${index != null?( index == 0 ? 'rounded-t border-b': ' border-b'): 'rounded'} ${theme == 'dark' ? 'bg-todo-dark border-color-dark': 'bg-todo-light border-color-light'} px-7 py-5`}>
+            <div className="flex justify-between items-center w-full h-full">
+                <div onClick={() =>mainClick()} className={`flex relative items-center justify-center  mr-3 rounded-full cursor-pointer ${theme == 'dark' ? 'borderBg-color-dark':'borderBg-color-light'} ${status === 'completed' && 'gradient-bg'} check-box`}>
                     <img className="w-6/12 h-6/12" src={iconCheck} />
-                    {(status === 'active' || type === 'input')&& <div className={`absolute inset-0 m-auto w-5 rounded-full h-5 ${theme == 'dark' ? 'bg-todo-dark': 'bg-todo-light'}`} z-1></div>}
+                    {(status === 'active' || type === 'input')&& <div className={`absolute inset-0 m-auto w-6 rounded-full h-6 ${theme == 'dark' ? 'bg-todo-dark': 'bg-todo-light'}`} z-1></div>}
                 </div>
                 {
                     type === 'input' ? 
                     <input ref={inputRef} className={`w-11/12 outline-0 focus:outline-none text-xl font-medium ${theme == 'dark' ? 'bg-todo-dark text-color-dark': 'bg-todo-light text-color-light'}`}type="text" placeholder="Create a new todo..."/>
                     :
-                    <div className={`text-xl font-medium text-color-dark cursor-pointer ${status === 'completed' && 'line-through '} ${theme == 'dark' ?'text-color-dark':'text-color-light'}`}>{text}</div>
+                    <div className={`text-xl w-11/12 overflow-text font-medium text-color-dark cursor-pointer ${status === 'completed' && 'line-through '} ${theme == 'dark' ?'text-color-dark':'text-color-light'}`}>{text}</div>
                 }
             </div>
-           {type === 'text' && index != null && <img onClick={() =>{onDelete && onDelete(index)}} className="cursor-pointer" src={iconClose}/>}
+           {type === 'text' && index != null && <img onClick={() =>{onDelete && onDelete(index)}} className="cursor-pointer ml-6" src={iconClose}/>}
         </div>
      );
 }
