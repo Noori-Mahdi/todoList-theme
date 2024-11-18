@@ -1,7 +1,6 @@
 import { TodoBoxPropsType } from "../../types/type";
 import iconClose from "./../../assets/img/icon-cross.svg";
 import iconCheck from "./../../assets/img/icon-check.svg";
-import plusDark from "../../assets/img/plus-solidDarkMode.svg";
 import "./style.scss";
 import "./../../sass/global.scss";
 import { useEffect, useRef, useState } from "react";
@@ -69,7 +68,9 @@ export const TodoBox = ({
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       className={`
-        ${type != "input" && "cursor-grab"}  items-center w-full min-h-full ${
+        ${type != "input" && "cursor-grab"} ${
+        dragMode && newTodoForDrag && "cursor-grabbing"
+      } items-center w-full min-h-full ${
         index != null
           ? index == 0
             ? "rounded-t border-b"
@@ -110,7 +111,7 @@ export const TodoBox = ({
                   inputRef.current.value = "";
                 }
               }}
-              className={`w-11/12 outline-0 focus:outline-none text-xl font-medium ${
+              className={`w-11/12 outline-0 placeholder:capitalize focus:outline-none text-xl font-medium ${
                 theme == "dark"
                   ? "bg-todo-dark text-color-dark"
                   : "bg-todo-light text-color-light"
@@ -120,7 +121,7 @@ export const TodoBox = ({
             />
           ) : (
             <div
-              className={`text-xl w-11/12 overflow-text font-medium text-color-dark ${
+              className={`tracking-wider text-xl w-11/12 overflow-text font-medium text-color-dark ${
                 status === "completed" && "line-through "
               } ${theme == "dark" ? "text-color-dark" : "text-color-light"}
               ${dragMode ? "select-none" : "select-text"}`}
@@ -145,9 +146,6 @@ export const TodoBox = ({
         <div className="border-t select-none mt-4 dropBox">
           <TodoBox type="text" text={dragMode.text} status={dragMode.status} />
         </div>
-        // <div className="flex justify-center items-center select-none w-full h-14 text-center border-t pt-4  py-3 my-4">
-        //   <img className="h-8 w-8 p-1 border-2 border-dash" src={plusDark} />
-        // </div>
       )}
     </div>
   );

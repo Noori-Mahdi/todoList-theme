@@ -106,7 +106,7 @@ export const Todo = () => {
     <div className=" w-10/12 mt-20 z-10">
       <div className="flex items-center justify-between">
         <h1
-          className={`text-4xl uppercase tracking-widest font-bold text-color-nav-dark`}
+          className={`text-4xl uppercase font-bold text-color-nav-dark`}
         >
           todo
         </h1>
