@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TodoBox } from "../TodoBox/TodoBox";
 import iconSun from "./../../assets/img/icon-sun.svg";
 import iconMoon from "./../../assets/img/icon-moon.svg";
@@ -63,13 +63,6 @@ export const Todo = () => {
     }
   };
 
-  const handleDrag = (index: number) => {
-    if (list != null) {
-      const newList = list.filter((e, i) => i !== index);
-      setList(newList);
-    }
-  };
-
   const handleKeyDownEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
     const inputElement = event.target as HTMLInputElement;
     if (event.key === "Enter" && inputElement.value !== "") {
@@ -82,8 +75,35 @@ export const Todo = () => {
     }
   };
 
+  const handleDrag = (index: number) => {
+    if (list != null && list.length > 1) {
+      setDragItem(list[index]);
+      const newList = list.filter((e, i) => i !== index);
+      setList(newList);
+    }
+  };
+
+  const handleDrop = (index: number) => {
+    if (list && dragItem) {
+      const newList = [...list];
+      newList.splice(index + 1, 0, dragItem);
+      setList(newList);
+      setDragItem(null);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setDragItem(null);
+  };
+
+  useEffect(() => {
+    window.addEventListener("mouseup", handleMouseUp);
+
+    return window.addEventListener("mouseup", handleMouseUp);
+  }, []);
+
   return (
-    <div className="w-10/12 mt-20 z-10">
+    <div className=" w-10/12 mt-20 z-10">
       <div className="flex items-center justify-between">
         <h1
           className={`text-4xl uppercase tracking-widest font-bold text-color-nav-dark`}
@@ -98,7 +118,6 @@ export const Todo = () => {
       </div>
       <div className="mt-10">
         <TodoBox
-          onDrag={handleDrag}
           onHandleKeyDownEnter={handleKeyDownEnter}
           onCreateTodo={handleCreateTodo}
           type="input"
@@ -111,9 +130,11 @@ export const Todo = () => {
               return (
                 <TodoBox
                   onDrag={handleDrag}
+                  onDrop={handleDrop}
                   onChangeStatus={handleChangeStatus}
                   onDelete={handleDelete}
                   key={index}
+                  dragMode={dragItem}
                   index={index}
                   text={e.text}
                   status={e.status}

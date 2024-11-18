@@ -8,10 +8,12 @@ export interface TodoBoxPropsType {
   status?: "active" | "completed";
   text?: string;
   index?: number;
+  dragMode?: { text: string; status: "active" | "completed" } | null;
   onDelete?: (index: number) => void;
   onChangeStatus?: (index: number) => void;
   onCreateTodo?: (text: string) => void;
-  onDrag: (index: number) => void;
+  onDrag?: (index: number) => void;
+  onDrop?: (index: number) => void;
   onHandleKeyDownEnter?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
